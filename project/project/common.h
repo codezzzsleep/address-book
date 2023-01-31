@@ -22,7 +22,7 @@
 hiex::Window init();
 
 /*
-	摧毁窗口函数
+	摧毁窗口
 */
 void destroy();
 
@@ -33,6 +33,29 @@ int menu(hiex::Window);
 /*
 	加载功能按钮
 */
-void loadButton(hiex::Window window);
-
+void loadButton(hiex::Window);
+/*
+	创建新的通讯录
+*/
+void onCreate();
+/*
+	在通讯录的末尾，写入新的信息
+*/
+void onAdd();
+/*
+	查询某人的信息，如果找到了，则显示该人的信息，如果未找到，则提示通讯录中没有此人的信息，并返回选单
+*/
+void onFind();
+/*
+	修改某人的信息，如果未找到要修改的人，则提示通讯录中没有此人的信息，并返回选单。
+*/
+void onAlter();
+/*
+	删除某人的信息，如果未找到要删除的人，则提示通讯录中没有此人的信息，并返回选单。
+*/
+void onDelete();
+/*
+	显示通讯录的所有信息
+*/
+void onList();
 

@@ -155,8 +155,14 @@
     <ClCompile Include="..\..\..\HiEasyX\HiEasyX\HiEasyX\HiSysGUI\SysStatic.cpp" />
     <ClCompile Include="..\..\..\HiEasyX\HiEasyX\HiEasyX\HiWindow.cpp" />
     <ClCompile Include="..\..\..\HiEasyX\HiEasyX\main.cpp" />
+    <ClCompile Include="add.cpp" />
+    <ClCompile Include="create.cpp" />
+    <ClCompile Include="find.cpp" />
+    <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="alter.cpp" />
+    <ClCompile Include="delete.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\HiEasyX\HiEasyX\HiEasyX.h" />
