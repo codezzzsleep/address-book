@@ -19,7 +19,7 @@
 /*
 	初始化窗口函数
 */
-hiex::Window init();
+void init();
 
 /*
 	摧毁窗口
@@ -27,13 +27,29 @@ hiex::Window init();
 void destroy();
 
 /*
+	获取当前窗口
+*/
+hiex::Window getWindow();
+
+/*
+	获取当前画布
+*/
+hiex::Canvas getCanvas();
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 	绘制菜单
 */
-int menu(hiex::Window);
+void menu();
 /*
 	加载功能按钮
 */
-void loadButton(hiex::Window);
+void loadButton();
+/*
+	加载标题
+*/
+void loadTitle();
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /*
 	创建新的通讯录
 */

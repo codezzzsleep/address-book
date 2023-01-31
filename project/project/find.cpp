@@ -1,5 +1,8 @@
 #include "common.h"
 
 void onFind() {
-	std::cout << "onFind" << std::endl;
+	hiex::Window window = getWindow();
+	hiex::Canvas canvas = getCanvas();
+	canvas.OutTextXY(300, 20, L"onadd");
+	window.Redraw();
 }

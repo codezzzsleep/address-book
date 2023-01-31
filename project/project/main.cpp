@@ -1,28 +1,32 @@
 ﻿#include "common.h"
 
 
-
+hiex::Window window;
+hiex::Canvas canvas;
 int main()
 {
-	hiex::Window window = init();
-	menu(window);
+	init();
+	menu();
 	
 	destroy();
 	return 0;
 
 }
-hiex::Window init() {
-	hiex::Window window;
-	//hiex::Canvas canvas;	
+void init() {
 	window.Create(WINDOW_WIDTH, WINDOW_HEIGHT);
-	//window.BindCanvas(&canvas);
+	window.BindCanvas(&canvas);
 	hiex::SetWindowTitle(_T("通讯录"));
 	hiex::AutoExit();
 	EnableResizing(GetHWnd(), false);
-	return window;
 }
 void destroy() {
 	closegraph();
+}
+hiex::Window getWindow() {
+	return window;
+}
+hiex::Canvas getCanvas() {
+	return canvas;
 }
 
 

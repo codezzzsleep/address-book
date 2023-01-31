@@ -1,6 +1,8 @@
 #include "common.h"
 
 void onAlter() {
-	using namespace std;
-	cout << "onAlter" << endl;
+	hiex::Window window = getWindow();
+	hiex::Canvas canvas = getCanvas();
+	canvas.OutTextXY(300, 20, L"onadd");
+	window.Redraw();
 }
