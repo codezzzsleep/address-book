@@ -1,6 +1,7 @@
 ﻿#include "common.h"
 
 hiex::Window window;
+hiex::Window _window;
 hiex::Canvas canvas;
 int main()
 {
@@ -50,11 +51,7 @@ hiex::Canvas getCanvas() {
 	return canvas;
 }
 void createNewWindow() {
-	
-	hiex::Window window2;
-	window2.Create(WINDOW_WIDTH, WINDOW_HEIGHT);
-	window2.BindCanvas(&canvas);
-	window = window2;
+
 }
 
 
