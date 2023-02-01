@@ -1,9 +1,11 @@
 #include "common.h"
 
 void onList() {
-	
 	hiex::Window window = getWindow();
 	hiex::Canvas canvas = getCanvas();
-	canvas.OutTextXY(300, 20, L"onadd");
+	canvas.Clear();
+	/*hiex::Button button();*/
+
+	canvas.OutTextXY(300, 200, L"onlist");
 	window.Redraw();
 }

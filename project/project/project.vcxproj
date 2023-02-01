@@ -160,7 +160,6 @@
     <ClCompile Include="find.cpp" />
     <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu.cpp" />
     <ClCompile Include="alter.cpp" />
     <ClCompile Include="delete.cpp" />
   </ItemGroup>

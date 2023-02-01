@@ -24,9 +24,6 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="menu.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\HiEasyX\HiEasyX\HiEasyX\HiCanvas.cpp">
       <Filter>HiEasyX</Filter>
     </ClCompile>
