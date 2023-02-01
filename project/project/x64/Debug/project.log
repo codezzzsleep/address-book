@@ -1,3 +1,0 @@
-﻿D:\Study\Microsoft Visual Studio\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1101,5): warning MSB8027: 名为 main.cpp 的两个或更多文件将生成到同一位置的输出。这会导致错误的生成结果。   调用的文件是 ..\..\..\HiEasyX\HiEasyX\main.cpp, main.cpp。
-  main.cpp
-  project.vcxproj -> E:\studyCode\project\address-book\project\x64\Debug\project.exe
