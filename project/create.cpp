@@ -3,6 +3,7 @@
 void onCreate() {
 	hiex::Window window = getWindow();
 	hiex::Canvas canvas = getCanvas();
-	canvas.OutTextXY(0, 320, L"oncreate");
-	window.Redraw();
+	createNewWindow();
+	initNewWindow();
+	hiex::SetWindowTitle(L"通讯录-创建新的通讯录");
 }

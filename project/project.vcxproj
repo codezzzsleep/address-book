@@ -156,11 +156,14 @@
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiWindow.cpp" />
     <ClCompile Include="add.cpp" />
     <ClCompile Include="create.cpp" />
+    <ClCompile Include="dataop.cpp" />
+    <ClCompile Include="excelHelp.cpp" />
     <ClCompile Include="find.cpp" />
     <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="alter.cpp" />
     <ClCompile Include="delete.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\HiEasyX\HiEasyX\HiEasyX.h" />

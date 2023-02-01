@@ -3,6 +3,7 @@
 void onFind() {
 	hiex::Window window = getWindow();
 	hiex::Canvas canvas = getCanvas();
-	canvas.OutTextXY(0, 220, L"onfind");
-	window.Redraw();
+	createNewWindow();
+	initNewWindow();
+	hiex::SetWindowTitle(L"Í¨Ñ¶Â¼-²éÕÒ");
 }

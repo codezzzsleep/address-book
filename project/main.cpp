@@ -1,7 +1,6 @@
 ﻿#include "common.h"
 
 hiex::Window window;
-hiex::Window _window;
 hiex::Canvas canvas;
 int main()
 {
@@ -50,13 +49,29 @@ hiex::Window getWindow() {
 hiex::Canvas getCanvas() {
 	return canvas;
 }
-void createNewWindow() {
 
+
+
+void createNewWindow() {
+	hiex::Window temp;
+	hiex::Window _window;
+	_window.Create(WINDOW_WIDTH, WINDOW_HEIGHT);
+	_window.BindCanvas(&canvas);
+	temp = window;
+	window = _window;
+	_window = temp;
+	temp.Destroy();
+	_window.Destroy();
 }
 
 
 
-
+void loadTitle() {
+	canvas.SetTypeface(L"Arial");
+	canvas.SetFont(50);
+	canvas.OutTextXY(120, 20, L"欢迎使用通讯录！");
+	window.Redraw();
+}
 
 
 /*
@@ -80,10 +95,4 @@ void loadButton() {
 	List.RegisterMessage(onList);
 	Quit.RegisterMessage(destroy);
 
-}
-void loadTitle() {
-	canvas.SetTypeface(L"Arial");
-	canvas.SetFont(50);
-	canvas.OutTextXY(100, 20, L"欢迎使用通讯录！");
-	window.Redraw();
 }
