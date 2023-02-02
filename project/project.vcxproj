@@ -155,7 +155,6 @@
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiSysGUI\SysStatic.cpp" />
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiWindow.cpp" />
     <ClCompile Include="dataop.cpp" />
-    <ClCompile Include="excelHelp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="utils.cpp" />

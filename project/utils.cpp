@@ -1,24 +1,32 @@
-#include "common.h"
+#include"common.h"
 
-void initNewWindow() {
-	hiex::AutoExit();
-	EnableResizing(GetHWnd(), false);
+char* wcharTochar(const wchar_t* _wchar) {
+	char* _char;
+	int len = WideCharToMultiByte(CP_ACP, 0, _wchar, (int)wcslen(_wchar), NULL, 0, NULL, NULL);
+	_char = new char[len + 1];
+	WideCharToMultiByte(CP_ACP, 0, _wchar, (int)wcslen(_wchar), _char, len, NULL, NULL);
+	_char[len] = '\0';
+	return _char;
 }
-
-hiex::Window showTable(hiex::Window window) {
-	hiex::Canvas canvas;
-	window.BindCanvas(&canvas);
-	int hight = WINDOW_HEIGHT - 60;
-	int width = WINDOW_WIDTH;
-	int col = COL; //列
-	int row = ROW; //行
-	int h_distance = hight / row;
-	int w_distance = width / col;
-	canvas.CenterText(L"test");
-	for (int i = 0; i <= hight; i += h_distance) {
-		canvas.Line(0, 0 + i,width,0+i);
-	}
-	for (int i = 0; i <= width; i += w_distance) {
-		canvas.Line(0 + i, 0, 0 + i, hight);
+void openFileDialog() {
+	OPENFILENAME ofn;			// 公共对话框结构
+	TCHAR szFile[MAX_PATH];		// 保存获取文件名称的缓冲区
+	ZeroMemory(&ofn, sizeof(OPENFILENAME));
+	ofn.lStructSize = sizeof(OPENFILENAME);
+	ofn.hwndOwner = NULL;
+	ofn.lpstrFile = szFile;
+	ofn.lpstrFile[0] = '\0';
+	ofn.nMaxFile = sizeof(szFile);
+	ofn.lpstrFilter = L"All\0*.*\0Text\0*.TXT\0Image\0*.PNG;*.JPG\0"; //过滤规则
+	ofn.nFilterIndex = 1;
+	ofn.lpstrFileTitle = NULL;
+	ofn.nMaxFileTitle = 0;
+	ofn.lpstrInitialDir = L"C:\\Program Files";	//指定默认路径
+	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+	if (GetOpenFileName(&ofn)) {
+		//显示选择的文件。
+		wchar_t* t = ofn.lpstrFile;
+		// 将wchar_t转化为char输出
+		std::cout << wcharTochar(t) << std::endl;
 	}
 }

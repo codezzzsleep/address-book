@@ -1,28 +1,23 @@
 #pragma once
 
 #include <iostream>
+#include <ShlObj.h>
+#include <windows.h>
+#include <Commdlg.h>
 #include "HiEasyX.h"
 
 
-#define WINDOW_WIDTH        640			                                              //定义窗口的宽度
+#define WINDOW_WIDTH        300			                                              //定义窗口的宽度
 
-#define WINDOW_HEIGHT       490	                                                      //定义窗口的高度
+#define WINDOW_HEIGHT       480	                                                      //定义窗口的高度
 
-#define AMOUNT              7                                                         //定义功能总数
-										                                              
 #define BUTTON_WIDTH        160                                                       //定义按钮的宽度
 					        			                                              
 #define BUTTON_HEIGHT       40                                                        //定义按钮的长度
 						    									                      
-#define HEIGHT_DISTANCE     (WINDOW_HEIGHT / AMOUNT - BUTTON_HEIGHT)/2                //定义按钮的纵向距离
-
 #define OK 1
 
 #define ERROR 0
-
-#define COL  8                                                                         //列数
-#define ROW	 10    																	   //行数
-
 
 typedef int Status;
 
@@ -79,7 +74,7 @@ void init();
 */
 void destroy();
 
-
+void menu();
 
 /*
 	加载功能按钮
@@ -115,14 +110,10 @@ void onDelete();
 */
 void onList();
 /*
-	创建新的窗口
+	导入文件
 */
-void createNewWindow();
+void onImport();
 /*
-	初始化新窗口
+	打开文件选择器
 */
-void initNewWindow();
-/*
-	画表格
-*/
-void showTable();
+void openFileDialog();

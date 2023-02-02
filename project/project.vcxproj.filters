@@ -102,16 +102,13 @@
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiWindow.cpp">
       <Filter>HiEasyX</Filter>
     </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="excelHelp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="dataop.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="menu.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
