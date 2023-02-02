@@ -28,8 +28,7 @@ typedef int Status;
 */
 typedef struct person
 {
-	int age;		                                                                  //年龄
-	int sex;		                                                                  //性别
+	std::string sex;		                                                          //性别
 	std::string phone;                                                                //电话
 	std::string address;                                                              //地址
 	std::string belong;																  //类别
@@ -121,3 +120,17 @@ void openFileDialog();
 	搜索
 */
 void onSearch();
+/*
+	文本框的回调函数
+*/
+void getText(std::wstring wstrText);
+void getName(std::wstring wstrText);
+void isMale(bool);
+void getPhone(std::wstring wstrText);
+void getAddress(std::wstring wstrText);
+void getBelong(std::wstring wstrText);
+void onAdd();
+/*
+	打开一个新窗口
+*/
+hiex::Window newWindow();
