@@ -117,3 +117,7 @@ void onImport();
 	打开文件选择器
 */
 void openFileDialog();
+/*
+	搜索
+*/
+void onSearch();

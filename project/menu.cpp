@@ -2,16 +2,21 @@
 
 hiex::Window window;
 hiex::Canvas canvas;
+void loadText() {
+	hiex::SysEdit search(window.GetHandle(),0,0,240,20,L"搜索");
+}
 void menu() {
 	init();
+	loadText();
 	hiex::SysButton create(window.GetHandle(), 0, 440, 100, 40, L"新建");
 	hiex::SysButton list(window.GetHandle(), 100, 440, 100, 40, L"联系人");
 	hiex::SysButton lead_in(window.GetHandle(), 200, 440, 100, 40, L"导入");
-
+	hiex::SysButton searchButton(window.GetHandle(), 240, 0, 60, 20, L"搜索");
 	//注册点击消息
 	create.RegisterMessage(onCreate);
 	list.RegisterMessage(onList);
 	lead_in.RegisterMessage(onImport);
+	searchButton.RegisterMessage(onSearch);
 	hiex::init_end();
 }
 /*
@@ -61,4 +66,9 @@ void onList() {
 }
 void onImport() {
 	openFileDialog();
+}
+void onSearch() {
+	canvas.Clear();
+	canvas.CenterText(L"onsearch");
+	window.Redraw();
 }
