@@ -4,7 +4,7 @@
 #include "HiEasyX.h"
 
 
-#define WINDOW_WIDTH        630			                                              //定义窗口的宽度
+#define WINDOW_WIDTH        640			                                              //定义窗口的宽度
 
 #define WINDOW_HEIGHT       490	                                                      //定义窗口的高度
 
@@ -20,6 +20,10 @@
 
 #define ERROR 0
 
+#define COL  8                                                                         //列数
+#define ROW	 10    																	   //行数
+
+
 typedef int Status;
 
 #define MAXSIZE                 1000												  //每个通讯录最大的数量	
@@ -29,12 +33,12 @@ typedef int Status;
 */
 typedef struct person
 {
-	std::string name;                                                                 //姓名
 	int age;		                                                                  //年龄
 	int sex;		                                                                  //性别
 	std::string phone;                                                                //电话
 	std::string address;                                                              //地址
 	std::string belong;																  //类别
+	std::string name;                                                                 //姓名
 
 }Person;
 
@@ -75,15 +79,8 @@ void init();
 */
 void destroy();
 
-/*
-	获取当前窗口
-*/
-hiex::Window getWindow();
 
-/*
-	获取当前画布
-*/
-hiex::Canvas getCanvas();
+
 /*
 	加载功能按钮
 */
@@ -125,3 +122,7 @@ void createNewWindow();
 	初始化新窗口
 */
 void initNewWindow();
+/*
+	画表格
+*/
+void showTable();

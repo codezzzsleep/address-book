@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="源文件\function">
-      <UniqueIdentifier>{062bca34-051a-4cf5-b97f-002c8c63bf10}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HiEasyX">
       <UniqueIdentifier>{b3b2cfc6-6992-4358-a4b8-1e17a61264a6}</UniqueIdentifier>
     </Filter>
@@ -23,24 +20,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="add.cpp">
-      <Filter>源文件\function</Filter>
-    </ClCompile>
-    <ClCompile Include="alter.cpp">
-      <Filter>源文件\function</Filter>
-    </ClCompile>
-    <ClCompile Include="create.cpp">
-      <Filter>源文件\function</Filter>
-    </ClCompile>
-    <ClCompile Include="delete.cpp">
-      <Filter>源文件\function</Filter>
-    </ClCompile>
-    <ClCompile Include="find.cpp">
-      <Filter>源文件\function</Filter>
-    </ClCompile>
-    <ClCompile Include="list.cpp">
-      <Filter>源文件\function</Filter>
     </ClCompile>
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiCanvas.cpp">
       <Filter>HiEasyX</Filter>
@@ -130,6 +109,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dataop.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

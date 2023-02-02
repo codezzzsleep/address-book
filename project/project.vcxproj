@@ -154,15 +154,10 @@
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiSysGUI\SysRadioButton.cpp" />
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiSysGUI\SysStatic.cpp" />
     <ClCompile Include="..\..\HiEasyX\HiEasyX\HiEasyX\HiWindow.cpp" />
-    <ClCompile Include="add.cpp" />
-    <ClCompile Include="create.cpp" />
     <ClCompile Include="dataop.cpp" />
     <ClCompile Include="excelHelp.cpp" />
-    <ClCompile Include="find.cpp" />
-    <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="alter.cpp" />
-    <ClCompile Include="delete.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
