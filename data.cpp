@@ -59,10 +59,14 @@ void myfinish() {
     if(!pixfout.open(QIODevice::WriteOnly | QIODevice::Text)) {
         cout<<"can not open the idpix.txt"<<endl;
     }
-    for(int i=0;i<users.size();i++){
-        //将对应信息分别写入对应的文本文件
-        fout << users[i].first << " " << users[i].second << endl;
-        pixfout.write((idpixs[i]+"\n").toUtf8());
+    //for(int i=0;i<users.size();i++){
+    //    //将对应信息分别写入对应的文本文件
+    //    fout << users[i].first << " " << users[i].second << endl;
+    //    //pixfout.write((idpixs[i]+"\n").toUtf8());
+    //}
+    SqList L = getSqList();
+    for (int i = 0; i < L.length; i++) {
+        fout << L.elem[i].name << " " << L.elem[i].phone << " " << L.elem[i].address << " " << L.elem[i].belong << endl;
     }
     //文件关闭
     fout.close();

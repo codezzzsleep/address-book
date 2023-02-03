@@ -98,7 +98,6 @@ void MainWindow::on_pushButton_2_clicked()
 {
     addUI addui;                                        //定义一个addUI对象 addui
     addui.setWindowTitle(z("添加联系人"));              //设置标题
-    //addui.setWindowIcon(QIcon("images/Logo.ico"));      //设置图标
     addui.exec();                                       //显示
     listinit();                                         //再次初始化列表(其实就是更新信息）
 }
@@ -109,71 +108,70 @@ void MainWindow::on_pushButton_3_clicked()
 {
     delUI dui;                                          //定义一个delUI对象 dui
     dui.setWindowTitle(z("删除联系人"));                //设置标题
-   //dui.setWindowIcon(QIcon("images/Logo.ico"));        //设置图标
     dui.exec();                                         //显示
     listinit();                                         //再次初始化列表(其实就是更新信息）
 }
 
-//拨号 (这个需要配置一下 你的手机 这款应用，没有就不要点，否则点击会崩溃，会在data.cpp中提到)
-//如果直接用Qt Creator打开的话把这函数注释掉，包括data.cpp中的对他的定义，原因会在data.cpp中提到，vs打开则不需要注释掉
-void MainWindow::on_pushButton_4_clicked()              
-{
-    QString phone = ui->lineEdit_3->text();             //读取电话文本框的内容
-    string tphone;
-    tphone = string(phone.toLocal8Bit());               //转为string
-    mycall(tphone);                                     //在data.cpp中定义
-}
-
-//设置头像
-void MainWindow::on_pushButton_5_clicked()
-{
-    //打开文件选择对话框，设定只可以选择.png和.jpg文件并利用qpath保存文件路径
-    QString qpath = QFileDialog::getOpenFileName(this,z("选择导入头像"),".","image file(*.png *.jpg);");
-
-    QModelIndex index = ui->listView->currentIndex();   //读取当前用户列表中选中的用户
-    int idx = index.row();                              //idx保存他在第几行(对应他保存时的下标)
-    if(qpath == "") qpath = "images/human.png";         //如果读取路径为空，即直接关闭了，则设为默认图形位置
-    idpixs[idx] = qpath;                                //将图像路径保存，(QVector<QString> idpixs申明在data.h，用于存头像文件路径)
-    //下面两行用于将头像更改
-    qpath = "#widget_5{border-image:url("+ qpath +");}";//将widget_5的背景更改的语句
-    //ui->widget_5->setStyleSheet(qpath);                 //即更改头像窗口的样式表
-    //保存修改后的图片路径，否则下次重新运行时头像又是默认头像了
-    QFile pixfout("idpix.txt");                        //idpix.txt存头像图片路径，使得下次打开程序是头像会显示之前设置的     
-    if(!pixfout.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        cout<<"can not open the idpix.txt"<<endl;      //打不开保存的文件(用cout其实打包后这个似乎并没用，只是我最初编写时为了方便自己查看问题)
-    }
-    for(int i=0;i<users.size();i++){
-        pixfout.write((idpixs[i]+"\n").toUtf8());      //将头像文件路径依次写入idpix.txt
-    }
-    pixfout.close();
-}
-
-//设置窗口背景
-void MainWindow::on_pushButton_6_clicked()
-{
-    //此处和头像更改几乎一样不多做解释
-    //但这里你也可以看到将路径保存到.txt文件的用处了
-    //头像更改后，再次打开头像显示会是更改后的，但是背景更改后再次打开会又变成默认背景(毕竟没有保存嘛)
-    QString qpath = QFileDialog::getOpenFileName(this,z("选择导入背景"),".","image file(*.png *.jpg);");
-    if (qpath == "") qpath = "images/flowers.png";
-    qpath = "#MainWindow{border-image:url("+ qpath +");}";
-    this->setStyleSheet(qpath);
-}
-
-
-//bgm设置
-void MainWindow::on_pushButton_7_clicked()
-{
-    mciSendString(L"close bgm", 0, 0, 0);
-    mciSendString(L"open songs\\bgm4.mp3 alias bgm", 0, 0, 0);
-    mciSendString(L"play bgm", 0, 0, 0);
-}
-
-//bgm关闭
-void MainWindow::on_pushButton_8_clicked()
-{
-    mciSendString(L"close bgm", 0, 0, 0);
-}
+////拨号 (这个需要配置一下 你的手机 这款应用，没有就不要点，否则点击会崩溃，会在data.cpp中提到)
+////如果直接用Qt Creator打开的话把这函数注释掉，包括data.cpp中的对他的定义，原因会在data.cpp中提到，vs打开则不需要注释掉
+//void MainWindow::on_pushButton_4_clicked()              
+//{
+//    QString phone = ui->lineEdit_3->text();             //读取电话文本框的内容
+//    string tphone;
+//    tphone = string(phone.toLocal8Bit());               //转为string
+//    mycall(tphone);                                     //在data.cpp中定义
+//}
+//
+////设置头像
+//void MainWindow::on_pushButton_5_clicked()
+//{
+//    //打开文件选择对话框，设定只可以选择.png和.jpg文件并利用qpath保存文件路径
+//    QString qpath = QFileDialog::getOpenFileName(this,z("选择导入头像"),".","image file(*.png *.jpg);");
+//
+//    QModelIndex index = ui->listView->currentIndex();   //读取当前用户列表中选中的用户
+//    int idx = index.row();                              //idx保存他在第几行(对应他保存时的下标)
+//    if(qpath == "") qpath = "images/human.png";         //如果读取路径为空，即直接关闭了，则设为默认图形位置
+//    idpixs[idx] = qpath;                                //将图像路径保存，(QVector<QString> idpixs申明在data.h，用于存头像文件路径)
+//    //下面两行用于将头像更改
+//    qpath = "#widget_5{border-image:url("+ qpath +");}";//将widget_5的背景更改的语句
+//    //ui->widget_5->setStyleSheet(qpath);                 //即更改头像窗口的样式表
+//    //保存修改后的图片路径，否则下次重新运行时头像又是默认头像了
+//    QFile pixfout("idpix.txt");                        //idpix.txt存头像图片路径，使得下次打开程序是头像会显示之前设置的     
+//    if(!pixfout.open(QIODevice::WriteOnly | QIODevice::Text)) {
+//        cout<<"can not open the idpix.txt"<<endl;      //打不开保存的文件(用cout其实打包后这个似乎并没用，只是我最初编写时为了方便自己查看问题)
+//    }
+//    for(int i=0;i<users.size();i++){
+//        pixfout.write((idpixs[i]+"\n").toUtf8());      //将头像文件路径依次写入idpix.txt
+//    }
+//    pixfout.close();
+//}
+//
+////设置窗口背景
+//void MainWindow::on_pushButton_6_clicked()
+//{
+//    //此处和头像更改几乎一样不多做解释
+//    //但这里你也可以看到将路径保存到.txt文件的用处了
+//    //头像更改后，再次打开头像显示会是更改后的，但是背景更改后再次打开会又变成默认背景(毕竟没有保存嘛)
+//    QString qpath = QFileDialog::getOpenFileName(this,z("选择导入背景"),".","image file(*.png *.jpg);");
+//    if (qpath == "") qpath = "images/flowers.png";
+//    qpath = "#MainWindow{border-image:url("+ qpath +");}";
+//    this->setStyleSheet(qpath);
+//}
+//
+//
+////bgm设置
+//void MainWindow::on_pushButton_7_clicked()
+//{
+//    mciSendString(L"close bgm", 0, 0, 0);
+//    mciSendString(L"open songs\\bgm4.mp3 alias bgm", 0, 0, 0);
+//    mciSendString(L"play bgm", 0, 0, 0);
+//}
+//
+////bgm关闭
+//void MainWindow::on_pushButton_8_clicked()
+//{
+//    mciSendString(L"close bgm", 0, 0, 0);
+//}
 
 //选择列表用户改变ID框和电话框
 void MainWindow::re_change(QModelIndex index)           //这个函数绑定的信号是点击列表用户时触发，可在下面的listinit()中看到
@@ -186,10 +184,12 @@ void MainWindow::re_change(QModelIndex index)           //这个函数绑定的�
     SqList L = getSqList();
     name = QString::fromLocal8Bit(L.elem[idx].name.c_str());
     phone = QString::fromLocal8Bit(L.elem[idx].phone.c_str());
+    address = QString::fromLocal8Bit(L.elem[idx].address.c_str());
+    belong = QString::fromLocal8Bit(L.elem[idx].belong.c_str());
     ui->lineEdit_2->setText(name);                      //姓名文本框显示他的名字
     ui->lineEdit_3->setText(phone);                     //电话文本框显示他的电话
-    ui->lineEdit_4->setText("address");
-    ui->lineEdit_6->setText("belong");
+    ui->lineEdit_4->setText(address);
+    ui->lineEdit_6->setText(belong);
 }
 
 //初始化右侧列表

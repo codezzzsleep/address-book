@@ -42,6 +42,8 @@ void addUI::on_pushButton_clicked()
     //文本框清空
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
+    ui->lineEdit_3->clear();
+    ui->lineEdit_4->clear();
 }
 
 //取消关闭添加
