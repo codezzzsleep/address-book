@@ -70,6 +70,10 @@ void addUI::on_pushButton_3_clicked()
         tname = s;
         data >> s;
         tphone = s;
+        data >> s;
+        taddress = s;
+        data >> s;
+        tbelong = s;
         int flag;
         flag=myfind(tname,tphone);              //判断导入名单中当前导入的用户是否存在，避免重复添加
         if(flag!=0){

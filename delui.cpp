@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include "data.h"
-
+#include "op.h"
 #define z(s) (QString::fromLocal8Bit(s))
 delUI::delUI(QWidget *parent) :
     QDialog(parent),
@@ -70,6 +70,7 @@ void delUI::on_pushButton_3_clicked()
         if(flag==0){                                    //不存在直接跳过
             continue;
         }else{                                          //存在就删掉有关他的信息
+            
             users.erase(users.begin()+flag-1);
             idpixs.erase(idpixs.begin()+flag-1);
             model->removeRow(flag-1);
@@ -85,6 +86,7 @@ void delUI::on_pushButton_4_clicked()
 {
     model->removeRows(0,model->rowCount());             //清空列表内容
     users.clear();                                      //清空用户姓名电话
+    SqListClear();
     idpixs.clear();                                     //清空用户头像
     myfinish();                                         //保存数据
 }
@@ -96,6 +98,7 @@ void delUI::on_pushButton_5_clicked()
     QModelIndex index = ui->listView->currentIndex();   //index存当前所在列表的下标
     row_idx = index.row();                              //第几行
     model->removeRow(row_idx);                          //删掉那一行
+    deleteElemByIndex(row_idx);
     users.erase(users.begin()+row_idx);                 //清除他的名字电话
     idpixs.erase(idpixs.begin()+row_idx);               //清除他的头像
     myfinish();                                         //保存数据

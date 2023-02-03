@@ -33,3 +33,4 @@ SqList getSqList();
 Status setDate(std::string, std::string, std::string, std::string);
 
 Status SqListClear();
+Status deleteElemByIndex(int idx);

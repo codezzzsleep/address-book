@@ -34,3 +34,18 @@ Status setDate(std::string name, std::string phone, std::string address, std::st
 Status SqListClear() {
     ininSqList(L);
 }
+Status deleteElemByIndex(int idx) {
+    int len = L.length;
+    if (idx > len || idx<0) {
+        return OVERFLOW;
+    }
+    else {
+        for (int i = idx; i < len-1; i++) {
+            L.elem[i].name = L.elem[i + 1].name;
+            L.elem[i].address = L.elem[i + 1].address;
+            L.elem[i].phone = L.elem[i + 1].phone;
+            L.elem[i].belong = L.elem[i + 1].belong;
+        }
+        L.length--;
+    }
+}
