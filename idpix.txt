@@ -1,1 +1,2 @@
 images/human.png
+images/human.png

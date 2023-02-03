@@ -54,13 +54,19 @@ void MainWindow::on_pushButton_clicked()
 
     int i;
     //vector<pair<string, string> >users申明在data.h中，之后会讲，first存的名字，second存的电话
-    for(i=0;i<users.size();i++)                         
-    {
-        if(users[i].first==name){                       //如果存的用户中有叫这个名字的人
+    SqList L = getSqList();
+    for (i = 0; i < L.length; i++) {
+        if (L.elem[i].name == name) {
             break;
         }
     }
-    if(i>=users.size()){                                //即没这个人
+    //for(i=0;i<users.size();i++)                         
+    //{
+    //    if(users[i].first==name){                       //如果存的用户中有叫这个名字的人
+    //        break;
+    //    }
+    //}
+    if(i>=L.length){                                //即没这个人
         QMessageBox::information(this,z("错误"),z("查无此人"));       //消息弹窗，提醒查无此人
         ui->lineEdit->setText("");                      //清空查找文本框内容
     }else{                                              //即有这个人    
@@ -87,7 +93,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
     addUI addui;                                        //定义一个addUI对象 addui
     addui.setWindowTitle(z("添加联系人"));              //设置标题
-    addui.setWindowIcon(QIcon("images/Logo.ico"));      //设置图标
+    //addui.setWindowIcon(QIcon("images/Logo.ico"));      //设置图标
     addui.exec();                                       //显示
     listinit();                                         //再次初始化列表(其实就是更新信息）
 }
@@ -98,7 +104,7 @@ void MainWindow::on_pushButton_3_clicked()
 {
     delUI dui;                                          //定义一个delUI对象 dui
     dui.setWindowTitle(z("删除联系人"));                //设置标题
-    dui.setWindowIcon(QIcon("images/Logo.ico"));        //设置图标
+   //dui.setWindowIcon(QIcon("images/Logo.ico"));        //设置图标
     dui.exec();                                         //显示
     listinit();                                         //再次初始化列表(其实就是更新信息）
 }
@@ -206,12 +212,12 @@ void MainWindow::listinit()
     /******************************************************************************/
     /******************************************************************************/
     /******************************************************************************/
-    for(i=0;i<users.size();i++){
-        name=QString::fromLocal8Bit(users[i].first.data());     //读取用户名字并转为qstring
-        phone = QString::fromLocal8Bit(users[i].second.data()); //读取用户电话并转为qstring
-        name = name +" : "+ phone;                              //组合在一起
-        tuser.push_back(name);                                  //将其放入tuser中
-    }
+    //for(i=0;i<users.size();i++){
+    //    name=QString::fromLocal8Bit(users[i].first.data());     //读取用户名字并转为qstring
+    //    phone = QString::fromLocal8Bit(users[i].second.data()); //读取用户电话并转为qstring
+    //    name = name +" : "+ phone;                              //组合在一起
+    //    tuser.push_back(name);                                  //将其放入tuser中
+    //}
     /******************************************************************************/
    /******************************************************************************/
    /******************************************************************************/
