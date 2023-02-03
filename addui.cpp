@@ -3,7 +3,7 @@
 #include "data.h"
 #include <QMessageBox>
 #include <QFileDialog>
-
+#include "op.h"
 
 #define z(s) (QString::fromLocal8Bit(s))
 addUI::addUI(QWidget *parent) :
@@ -24,18 +24,23 @@ void addUI::on_pushButton_clicked()
 {
     QString name = ui->lineEdit_2->text();        //读取姓名文本框中的姓名
     QString phone = ui->lineEdit->text();         //读取电话文本框中的电话
-    string tname,tphone;
+    QString address = ui->lineEdit_3->text();
+    QString belong = ui->lineEdit_4->text();
+    string tname,tphone,taddress,tbelong;
     //stirng转为qstring
     tname=string(name.toLocal8Bit());
     tphone=phone.toStdString();
+    taddress = string(address.toLocal8Bit());
+    tbelong = string(belong.toLocal8Bit());
     myinit();                                     //读入(初始化)一下数据
     int flag;
     flag=myfind(tname,tphone);                    //看是否有名字和电话相同的人存在
     if(flag!=0){                                  //有
         QMessageBox::information(this,z("错误"),z("该用户已存在"));//弹出消息窗口提示
-    }else{                                        
-        users.push_back(make_pair(tname, tphone));//没有则将他添加进来
-        idpixs.push_back("images/human.png");     //将头像设为默认头像
+    }else{
+        setDate(tname, tphone, taddress, tbelong);
+        //users.push_back(make_pair(tname, tphone));//没有则将他添加进来
+        //idpixs.push_back("images/human.png");     //将头像设为默认头像
         QMessageBox::information(this,z("完成"),z("添加成功"));//弹出消息窗口提示
         myfinish();                              //保存数据，重新存入对应文本文件中
     }
@@ -70,8 +75,9 @@ void addUI::on_pushButton_3_clicked()
         if(flag!=0){
             continue;
         }else{
-            users.push_back(make_pair(tname, tphone));  //存入姓名电话
-            idpixs.push_back("images/human.png");       //设为默认头像
+            setDate(tname, tphone, taddress, tbelong);
+            //users.push_back(make_pair(tname, tphone));  //存入姓名电话
+            //idpixs.push_back("images/human.png");       //设为默认头像
         }
     }
     data.close();
