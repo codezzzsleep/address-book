@@ -70,11 +70,16 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::information(this,z("错误"),z("查无此人"));       //消息弹窗，提醒查无此人
         ui->lineEdit->setText("");                      //清空查找文本框内容
     }else{                                              //即有这个人    
-        QString qphone;
-        qphone = QString::fromLocal8Bit(users[i].second.data());    //记录他电话，并将string转为qstring，否则下面会报错
+        QString qphone,qaddress,qbelong;
+        
+        qphone = QString::fromLocal8Bit(L.elem[i].phone.c_str());
+        qaddress = QString::fromLocal8Bit(L.elem[i].address.c_str());
+        qbelong = QString::fromLocal8Bit(L.elem[i].belong.c_str());
+        //qphone = QString::fromLocal8Bit(users[i].second.data());    //记录他电话，并将string转为qstring，否则下面会报错
         ui->lineEdit_2->setText(qname);                 //姓名文本框显示他的名字
         ui->lineEdit_3->setText(qphone);                //电话文本框显示他的电话
-
+        ui->lineEdit_4->setText(qaddress);
+        ui->lineEdit_6->setText(qbelong);
         //下面几行就是选中该用户并显示 姓名，电话和头像，仔细一看上面几行似乎多余了，不删了吧
         listinit();                                     
         QModelIndex index = model->index(i);
