@@ -1,8 +1,8 @@
 ﻿#include "data.h"
-
+#include "op.h"
 vector<pair<string, string> >users;
 QVector<QString> idpixs;
-string s, name, phone;
+string s, name, phone,address,belong;
 
 //拨号(用Qt Creator或者没有配置 你的手机 的话记得把这段函数注释掉)
 void mycall(string s) {                              //传入电话的字符串
@@ -26,6 +26,7 @@ void mycall(string s) {                              //传入电话的字符串
 void myinit() {
     users.clear();                                  //清空users
     idpixs.clear();                                 //清空idpixs
+    SqListClear();
     ifstream data("userbook.txt");                  //打开存有用户信息的文本文件
     QFile file("idpix.txt");                        //打开存有用户头像文件路径的文本文件
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -37,12 +38,13 @@ void myinit() {
         line =line.trimmed();                       //去掉回车
         idpixs.push_back(line);                     //将路径存入idpixs
     }
-
+    SqList L = getSqList();
     while (data >> s) {                             //读一行名字
         name = s;                                   
         data >> s;                                  //读下一行的电话
         phone = s;                                  
         users.push_back(make_pair(name, phone));    //保存用户姓名和电话到users
+        setDate(name, phone, "test", "test");
     }
     //文件关闭
     data.close();

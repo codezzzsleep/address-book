@@ -24,8 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     listinit();                               //自己编写的函数，用于主窗口初始化
-    //connect(ui->pushButton_7, SIGNAL(clicked()), this, SLOT(on_pushButton_7_clicked));
-    //connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(on_pushButton_8_clicked));
 
     QModelIndex index = model->index(0);      //即设置第一个用户
     ui->listView->clicked(index);             //默认点击列表的一个用户(让头像显示第一个用户)
@@ -35,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEdit_2->setReadOnly(true);         
     ui->lineEdit_3->setReadOnly(true);
     ui->lineEdit_4->setReadOnly(true);
+    ui->lineEdit_6->setReadOnly(true);
+
 }
 
 MainWindow::~MainWindow()
@@ -188,7 +188,14 @@ void MainWindow::listinit()
     QString name,phone;                         
 
     int i;
-    tuser.clear();                                      //申明在mainwindow.h中对类MainWindow申明中,清空tuser;                
+    tuser.clear();                                      //申明在mainwindow.h中对类MainWindow申明中,清空tuser;
+    SqList L = getSqList();
+    for (i = 0; i < L.length; i++) {
+        name = QString::fromLocal8Bit(L.elem[i].name.c_str());
+        phone = QString::fromLocal8Bit(L.elem[i].phone.c_str());
+        name = name + " : " + phone;
+        tuser.push_back(name);
+    }
     for(i=0;i<users.size();i++){
         name=QString::fromLocal8Bit(users[i].first.data());     //读取用户名字并转为qstring
         phone = QString::fromLocal8Bit(users[i].second.data()); //读取用户电话并转为qstring
