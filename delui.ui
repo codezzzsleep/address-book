@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>delUI</class>
+ <widget class="QDialog" name="delUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>613</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#delUI
+{
+border-image: url(:/images/flowers.png);
+	background:rgba(12,10,20,0.45);
+}</string>
+  </property>
+  <widget class="QListView" name="listView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>441</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#listView
+{
+color: rgb(215, 223, 218);
+	background:rgba(12,10,20,0.35);
+}</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>60</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>10</pointsize>
+     <weight>10</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>快速删除</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>120</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_2
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>快速删除关闭</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>180</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_3
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>导入黑名单</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>240</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_4
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>清空联系人</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>380</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_5
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>删除</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>440</y>
+     <width>121</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_6
+{
+	background:rgba(246, 249, 245,0.35);
+	font: 87 10pt &quot;Arial Black&quot;;
+	color:  rgb(215, 223, 218);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>完成</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>10</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bauhaus 93</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#textBrowser
+{
+	background:rgba(246, 249, 245,0.25);
+	
+	font: 14pt &quot;Bauhaus 93&quot;;
+	color: rgb(243, 255, 251);
+}
+</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
