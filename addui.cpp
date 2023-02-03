@@ -57,7 +57,7 @@ void addUI::on_pushButton_3_clicked()
 {
     //打开文件打开对话框，选择要读入的文本文件，并保存其路径到qpath
     QString qpath = QFileDialog::getOpenFileName(this,z("选择导入名单"),".","txt file(*.txt);");
-    string path,tname,tphone;
+    string path,tname,tphone,taddress,tbelong;
     path = string(qpath.toLocal8Bit());
     ifstream data(path);                        //打开选择的文本文件
     myinit();                                   //数据初始化，即读入原有数据

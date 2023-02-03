@@ -75,11 +75,17 @@ void myfinish() {
 
 //查找用户是否存在
 int myfind(string a, string b) {
-    for (int i = 0; i < users.size(); i++) {
-        if (users[i].first == a && users[i].second == b) {   //找到了名字和电话都相同的用户
-            return i+1;                                      //返回他的位置，(背后完善mainwindow时忘记写过了这个了，啧)
+    SqList L = getSqList();
+    for (int i = 0; i < L.length; i++) {
+        if (L.elem[i].name == a && L.elem[i].phone == b) {
+            return i + 1;
         }
     }
+    //for (int i = 0; i < users.size(); i++) {
+    //    if (users[i].first == a && users[i].second == b) {   //找到了名字和电话都相同的用户
+    //        return i+1;                                      //返回他的位置，(背后完善mainwindow时忘记写过了这个了，啧)
+    //    }
+    //}
     return 0;
 }
 
