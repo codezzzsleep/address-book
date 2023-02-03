@@ -22,27 +22,25 @@ addUI::~addUI()
 //添加单个用户
 void addUI::on_pushButton_clicked()
 {
-    QString name = ui->lineEdit_2->text();        //读取姓名文本框中的姓名
-    QString phone = ui->lineEdit->text();         //读取电话文本框中的电话
+    QString name = ui->lineEdit_2->text();        
+    QString phone = ui->lineEdit->text();         
     QString address = ui->lineEdit_3->text();
     QString belong = ui->lineEdit_4->text();
     string tname,tphone,taddress,tbelong;
-    //stirng转为qstring
+
     tname=string(name.toLocal8Bit());
     tphone=phone.toStdString();
     taddress = string(address.toLocal8Bit());
     tbelong = string(belong.toLocal8Bit());
-    myinit();                                     //读入(初始化)一下数据
+    myinit();                                     
     int flag;
-    flag=myfind(tname,tphone);                    //看是否有名字和电话相同的人存在
-    if(flag!=0){                                  //有
-        QMessageBox::information(this,z("错误"),z("该用户已存在"));//弹出消息窗口提示
+    flag=myfind(tname,tphone);                    
+    if(flag!=0){                                  
+        QMessageBox::information(this,z("错误"),z("该用户已存在"));
     }else{
         setDate(tname, tphone, taddress, tbelong);
-        //users.push_back(make_pair(tname, tphone));//没有则将他添加进来
-        //idpixs.push_back("images/human.png");     //将头像设为默认头像
-        QMessageBox::information(this,z("完成"),z("添加成功"));//弹出消息窗口提示
-        myfinish();                              //保存数据，重新存入对应文本文件中
+        QMessageBox::information(this,z("完成"),z("添加成功"));
+        myfinish();                              
     }
     //文本框清空
     ui->lineEdit->clear();
@@ -60,12 +58,11 @@ void addUI::on_pushButton_2_clicked()
 //导入名单
 void addUI::on_pushButton_3_clicked()
 {
-    //打开文件打开对话框，选择要读入的文本文件，并保存其路径到qpath
     QString qpath = QFileDialog::getOpenFileName(this,z("选择导入名单"),".","txt file(*.txt);");
     string path,tname,tphone,taddress,tbelong;
     path = string(qpath.toLocal8Bit());
-    ifstream data(path);                        //打开选择的文本文件
-    myinit();                                   //数据初始化，即读入原有数据
+    ifstream data(path);                        
+    myinit();                                   
     while (data >> s) {
         tname = s;
         data >> s;
@@ -75,17 +72,15 @@ void addUI::on_pushButton_3_clicked()
         data >> s;
         tbelong = s;
         int flag;
-        flag=myfind(tname,tphone);              //判断导入名单中当前导入的用户是否存在，避免重复添加
+        flag=myfind(tname,tphone);              
         if(flag!=0){
             continue;
         }else{
             setDate(tname, tphone, taddress, tbelong);
-            //users.push_back(make_pair(tname, tphone));  //存入姓名电话
-            //idpixs.push_back("images/human.png");       //设为默认头像
         }
     }
     data.close();
-    QMessageBox::information(this,z("完成"),z("添加名单成功"));//弹出消息窗口提示
-    myfinish();                                 //保存数据，重新存入对应文本文件中
+    QMessageBox::information(this,z("完成"),z("添加名单成功"));
+    myfinish();                                 
 }
 

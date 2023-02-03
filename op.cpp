@@ -1,7 +1,8 @@
 #include "op.h"
 
 SqList L;
-int flag = 0;
+
+int flag = 0;   //判断是否已经初始化
 Status ininSqList(SqList& L) {
     L.elem = new ElemType[MAXSIZE];  
 
@@ -11,12 +12,17 @@ Status ininSqList(SqList& L) {
     flag++;
     return OK;
 }
-
+/*
+    返回线性表结构体指针
+*/
 SqList getSqList() {
     if (!flag)
         ininSqList(L);
     return L;
 }
+/*
+    向elem里面增加数据
+*/
 Status setDate(std::string name, std::string phone, std::string address, std::string belong) {
     int len = L.length;
     if (len < MAXSIZE) {
@@ -31,9 +37,15 @@ Status setDate(std::string name, std::string phone, std::string address, std::st
     }
     return OK;
 }
+/*
+    重新初始化
+*/
 Status SqListClear() {
     ininSqList(L);
 }
+/*
+    通过下标删除某一项
+*/
 Status deleteElemByIndex(int idx) {
     int len = L.length;
     if (idx > len || idx<0) {

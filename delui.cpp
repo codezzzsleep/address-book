@@ -12,14 +12,21 @@ delUI::delUI(QWidget *parent) :
     ui->setupUi(this);
 
     int i;
-    mulflag = 0;                                        //默认快速删除关闭
-    myinit();                                           //初始化(读入数据)
-    //下面这一段和mainwindow.cpp那一段类似，目的就是初始化列表，不再多介绍
+    mulflag = 0;                                        
+    myinit();                                           
+   
     QString name,phone;
-    for(i=0;i<users.size();i++){
+    /*for(i=0;i<users.size();i++){
         name=QString::fromLocal8Bit(users[i].first.data());
         phone = QString::fromLocal8Bit(users[i].second.data());
         name = name +" : "+ phone;
+        tuser.push_back(name);
+    }*/
+    SqList L = getSqList();
+    for (i = 0; i < L.length; i++) {
+        name = QString::fromLocal8Bit(L.elem[i].name.c_str());
+        phone = QString::fromLocal8Bit(L.elem[i].phone.c_str());
+        name = name + " : " + phone;
         tuser.push_back(name);
     }
     model = new QStringListModel(this);
@@ -27,10 +34,9 @@ delUI::delUI(QWidget *parent) :
     ui->listView->setModel(model);
     ui->listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    //绑定列表成员被点击时的信号和槽函数del_change(QModelIndex)
     connect(ui->listView,SIGNAL(clicked(QModelIndex)),this,SLOT(del_change(QModelIndex)));
-    ui->textBrowser->setText(z("快速删除：关闭")); //默认显示关闭
-    ui->textBrowser->setFocusPolicy(Qt::NoFocus);  //使得 快速删除状态栏 不可被聚焦(点不了)
+    ui->textBrowser->setText(z("快速删除：关闭")); 
+    ui->textBrowser->setFocusPolicy(Qt::NoFocus);  
 }
 
 delUI::~delUI()
@@ -66,28 +72,24 @@ void delUI::on_pushButton_3_clicked()
         data >> s;
         tphone = s;
         int flag;
-        flag=myfind(tname,tphone);                      //查看黑名单的用户是否存在
-        if(flag==0){                                    //不存在直接跳过
+        flag=myfind(tname,tphone);                      
+        if(flag==0){                                    
             continue;
-        }else{                                          //存在就删掉有关他的信息
-            
-            users.erase(users.begin()+flag-1);
-            idpixs.erase(idpixs.begin()+flag-1);
+        }else{                                          
+            deleteElemByIndex(flag-1);
             model->removeRow(flag-1);
         }
     }
     data.close();
-    QMessageBox::information(this,z("完成"),z("删除全体在黑名单中的成员成功"));//消息窗口提醒
-    myfinish();                                         //保存数据
+    QMessageBox::information(this,z("完成"),z("删除全体在黑名单中的成员成功"));
+    myfinish();                                       
 }
 
 //清空列表
 void delUI::on_pushButton_4_clicked()
 {
     model->removeRows(0,model->rowCount());             //清空列表内容
-    users.clear();                                      //清空用户姓名电话
     SqListClear();
-    idpixs.clear();                                     //清空用户头像
     myfinish();                                         //保存数据
 }
 
@@ -98,16 +100,14 @@ void delUI::on_pushButton_5_clicked()
     QModelIndex index = ui->listView->currentIndex();   //index存当前所在列表的下标
     row_idx = index.row();                              //第几行
     model->removeRow(row_idx);                          //删掉那一行
-    deleteElemByIndex(row_idx);
-    users.erase(users.begin()+row_idx);                 //清除他的名字电话
-    idpixs.erase(idpixs.begin()+row_idx);               //清除他的头像
+    deleteElemByIndex(row_idx);                         //在列表中删除
     myfinish();                                         //保存数据
 }
 
 //完成
 void delUI::on_pushButton_6_clicked()
 {
-    myfinish();                     //退出前保存数据
+    myfinish();                     
     this->close();
 }
 
@@ -115,6 +115,6 @@ void delUI::on_pushButton_6_clicked()
 void delUI::del_change(QModelIndex index)
 {
     if(mulflag==1){
-        on_pushButton_5_clicked();  //即开启后点击用户直接删除(自动帮你点击 删除 按钮)
+        on_pushButton_5_clicked();  
     }
 }
